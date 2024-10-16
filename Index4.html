@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverto</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background: linear-gradient(to bottom, #868a74, #4b503a);
+        }
+
+        header {
+            background: #303030;
+            color: #c6ccd2;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        header nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: #c6ccd2;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+            background: #9a876f;
+            border-radius: 8px;
+        }
+
+        .carousel {
+            position: relative;
+            margin: 20px 0;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f3ead9;
+        }
+
+        .carousel-item {
+            display: none;
+            padding: 20px;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+
+        button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+
+        footer {
+            background: #303030;
+            color: #c6ccd2;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        h2, h3, p{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#sobrenós">Sobre nós</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+        <h1>Informações de Contato</h1>
+    </header>
+
+    <section id="contato">
+        <h2>Entre em Contato Conosco</h2>
+        <div class="carousel">
+            <div class="carousel-item active">
+                <h3><img src="img's/Email.png" alt="logo email" title="Email" height="70"></h3>
+                <p><a href="mailto:contato@reverto.com">contato@reverto.gov.br</a></p>
+            </div>
+            <div class="carousel-item">
+                <h3><img src="img's/WhatsApp.png" alt="logo WhatsApp" title="WhatsApp" height="70"></h3>
+                <p>(11) 98760-8128</p>
+            </div>
+            <div class="carousel-item">
+                <h3><img src="img's/Instagram.png" alt="logo instagram" title="Instagram" height="70"></h3>
+                <p><a href="#">@reverto_oficial</a></p>
+            </div>
+            <div class="carousel-item">
+                <h3><img src="img's/Facebook_logo.png" alt="logo facebook" title="Facebook" height="70"></h3>
+                <p><a href="#">Reverto Oficial</a></p>
+            </div>
+        </div>
+        <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Reverto. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        let currentSlide = 0;
+        const items = document.querySelectorAll('.carousel-item');
+
+        function showSlide(index) {
+            items.forEach((item, i) => {
+                item.classList.remove('active');
+                if (i === index) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide < 0) {
+                currentSlide = items.length - 1;
+            } else if (currentSlide >= items.length) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        }
+
+        // Inicia o carousel mostrando o primeiro slide
+        showSlide(currentSlide);
+    </script>
+</body>
+</html>
